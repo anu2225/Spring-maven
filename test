@@ -1,0 +1,101 @@
+sql query
+SELECT 
+    a.adoption_id,
+    an.species,
+    a.adoption_date
+FROM 
+    Adoptions a
+JOIN 
+    Animals an ON a.animal_id = an.animal_id
+JOIN 
+    Adopters ad ON a.adopter_id = ad.adopter_id
+WHERE 
+    ad.age NOT BETWEEN 30 AND 40
+ORDER BY 
+    a.adoption_id ASC;
+
+
+
+
+
+//secure code generation-1
+import java.util.Scanner;
+
+public class SecuredCode {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter the word: ");
+        String word = sc.nextLine();
+
+        // Step 1: Reverse
+        String reversed = new StringBuilder(word).reverse().toString();
+
+        // Step 2: Caesar Cipher (+3 shift)
+        StringBuilder shifted = new StringBuilder();
+        for (char ch : reversed.toCharArray()) {
+            if (Character.isLetter(ch)) {
+                char base = Character.isUpperCase(ch) ? 'A' : 'a';
+                char newChar = (char) ((ch - base + 3) % 26 + base);
+                shifted.append(newChar);
+            } else {
+                shifted.append(ch);
+            }
+        }
+
+        // Step 3: ASCII values
+        StringBuilder asciiCode = new StringBuilder();
+        for (int i = 0; i < shifted.length(); i++) {
+            asciiCode.append((int) shifted.charAt(i));
+            if (i < shifted.length() - 1) asciiCode.append("-");
+        }
+
+        System.out.println("Secured Code: " + asciiCode);
+    }
+}
+
+
+
+
+
+
+
+//Array transformation-2
+import java.util.Scanner;
+
+public class ArrayTransform {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        // Input size
+        System.out.print("Enter array size: ");
+        int n = sc.nextInt();
+
+        if (n < 3 || n > 7) {
+            System.out.println(n + " is an invalid size");
+            return;
+        }
+
+        int[] arr = new int[n];
+        System.out.println("Enter " + n + " numbers:");
+        for (int i = 0; i < n; i++) {
+            arr[i] = sc.nextInt();
+        }
+
+        // Transformation
+        for (int i = 0; i < n; i++) {
+            int transformed;
+            if ((i + 1) % 2 != 0) { // odd position (1st, 3rd,...)
+                transformed = arr[i] * arr[i];
+            } else { // even position
+                transformed = arr[i] * arr[i] * arr[i];
+            }
+
+            // add to next element (circular)
+            int nextIndex = (i + 1) % n;
+            int result = transformed + arr[nextIndex];
+
+            System.out.println(result);
+        }
+    }
+}
+
