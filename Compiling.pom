@@ -37,7 +37,6 @@
         <configuration>
           <archive>
             <manifest>
-              <!-- full package path of Main class -->
               <mainClass>com.build.maven.java.Main</mainClass>
             </manifest>
           </archive>
