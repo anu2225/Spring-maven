@@ -1,6 +1,6 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
                              http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
     <modelVersion>4.0.0</modelVersion>
@@ -11,11 +11,10 @@
     <packaging>jar</packaging>
 
     <name>jb-hello-world-maven</name>
-    <description>Sample Maven project using Shade Plugin</description>
+    <description>Sample Maven project with Shade Plugin</description>
 
-    <!-- Dependencies -->
     <dependencies>
-        <!-- Joda-Time library -->
+        <!-- Joda-Time -->
         <dependency>
             <groupId>joda-time</groupId>
             <artifactId>joda-time</artifactId>
@@ -23,22 +22,20 @@
         </dependency>
     </dependencies>
 
-    <!-- Build Settings -->
     <build>
         <plugins>
-            <!-- Maven Compiler Plugin -->
+            <!-- Compiler plugin (Java 1.8) -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.8.1</version>
                 <configuration>
-                    <source>1.6</source>
-                    <target>1.6</target>
-                    <release>8</release>
+                    <source>1.8</source>
+                    <target>1.8</target>
                 </configuration>
             </plugin>
 
-            <!-- Maven Shade Plugin -->
+            <!-- Shade plugin to create fat JAR -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-shade-plugin</artifactId>
