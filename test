@@ -1,3 +1,112 @@
+import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.MethodOrderer.OrderAnnotation;
+import org.junit.jupiter.api.Order;
+import org.junit.jupiter.api.TestMethodOrder;
+
+@TestMethodOrder(OrderAnnotation.class)
+class EBBillTest {
+
+    EBConnection ebConnection;
+
+    @BeforeEach
+    void setUp() {
+        // Create a sample EBConnection object for testing
+        ebConnection = new EBConnection("E8123456", "Domestic", 0);
+    }
+
+    // 1. Test calculateBillAmount for units less than 100
+    @Test
+    @Order(1)
+    void test1_calculateBillAmountForUnitLessThan100() {
+        int units = 80;
+        double billAmount = EBBill.qalculateBillAmount(units);
+        assertTrue(billAmount == 208.0, "Bill should be 208.0 for 80 units (<100)");
+    }
+
+    // 2. Test calculateBillAmount for units equal to 100
+    @Test
+    @Order(2)
+    void test2_calculateBillAmountForUnitEqualTo100() {
+        int units = 100;
+        double billAmount = EBBill.qalculateBillAmount(units);
+        assertTrue(billAmount == 325.0, "Bill should be 325.0 for 100 units");
+    }
+
+    // 3. Test calculateBillAmount for units greater than 100 but less than 900
+    @Test
+    @Order(3)
+    void test3_calculateBillAmountForUnitGreaterThan100() {
+        int units = 500;
+        double billAmount = EBBill.qalculateBillAmount(units);
+        assertTrue(billAmount == 1625.0, "Bill should be 1625.0 for 500 units");
+    }
+
+    // 4. Test calculateBillAmount for units less than 900
+    @Test
+    @Order(4)
+    void test4_calculateBillAmountForUnitsLessThan900() {
+        int units = 899;
+        double billAmount = EBBill.qalculateBillAmount(units);
+        assertTrue(billAmount == 2921.75, "Bill should be 2921.75 for 899 units");
+    }
+
+    // 5. Test calculateBillAmount for units equal to 900
+    @Test
+    @Order(5)
+    void test5_calculateBillAmountForUnitEqualTo900() {
+        int units = 900;
+        double billAmount = EBBill.qalculateBillAmount(units);
+        assertTrue(billAmount == 4734.0, "Bill should be 4734.0 for 900 units");
+    }
+
+    // 6. Test calculateBillAmount for units greater than 900
+    @Test
+    @Order(6)
+    void test6_calculateBillAmountForUnitGreaterThan900() {
+        int units = 1000;
+        double billAmount = EBBill.qalculateBillAmount(units);
+        assertTrue(billAmount == 5260.0, "Bill should be 5260.0 for 1000 units");
+    }
+
+    // 7. Test validateConnectionType for Industrial
+    @Test
+    @Order(7)
+    void test7_validateConnectionType_Industrial() {
+        assertTrue(EBBill.validateConnectionType("Industrial"), "Industrial should be valid connection type");
+    }
+
+    // 8. Test validateConnectionType for Domestic
+    @Test
+    @Order(8)
+    void test8_validateConnectionType_Domestic() {
+        assertTrue(EBBill.validateConnectionType("Domestic"), "Domestic should be valid connection type");
+    }
+
+    // 9. Test validateConnectionType for invalid type
+    @Test
+    @Order(9)
+    void test9_validateConnectionType_Invalid() {
+        assertFalse(EBBill.validateConnectionType("Commercial"), "Commercial should be invalid connection type");
+    }
+
+    // 10. Test calculateBillAmount for invalid units (negative)
+    @Test
+    @Order(10)
+    void test10_calculateBillAmountForAnInvalidUnits() {
+        int units = -50;
+        double billAmount = EBBill.qalculateBillAmount(units);
+        assertFalse(billAmount > 0, "Bill should not be positive for negative units");
+    }
+}
+
+
+
+
+
+
+
 https://chatgpt.com/share/68abda84-5668-800a-8bd0-c6fc02a71504
 
 
