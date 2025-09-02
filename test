@@ -1,3 +1,156 @@
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 6 source files to /home/p10003/RecruitmentManagementSystem/target/classes
+[INFO] -------------------------------------------------------------
+[ERROR] COMPILATION ERROR : 
+[INFO] -------------------------------------------------------------
+[ERROR] /home/p10003/RecruitmentManagementSystem/src/main/java/com/controller/RecruitmentController.java:[47,24] ';' expected
+[ERROR] /home/p10003/RecruitmentManagementSystem/src/main/java/com/controller/RecruitmentController.java:[50,40] <identifier> expected
+[ERROR] /home/p10003/RecruitmentManagementSystem/src/main/java/com/controller/RecruitmentController.java:[50,50] <identifier> expected
+[ERROR] /home/p10003/RecruitmentManagementSystem/src/main/java/com/controller/RecruitmentController.java:[51,27] <identifier> expected
+[ERROR] /home/p10003/RecruitmentManagementSystem/src/main/java/com/controller/RecruitmentController.java:[51,28] illegal start of type
+[ERROR] /home/p10003/RecruitmentManagementSystem/src/main/java/com/controller/RecruitmentController.java:[52,9] illegal start of type
+[ERROR] /home/p10003/RecruitmentManagementSystem/src/main/java/com/controller/RecruitmentController.java:[55,8] class, interface, enum, or record expected
+[ERROR] /home/p10003/RecruitmentManagementSystem/src/main/java/com/controller/RecruitmentController.java:[58,5] class, interface, enum, or record expected
+[ERROR] /home/p10003/RecruitmentManagementSystem/src/main/java/com/controller/RecruitmentController.java:[59,1] class, interface, enum, or record expected
+[ERROR] /home/p10003/RecruitmentManagementSystem/src/main/java/com/controller/RecruitmentController.java:[61,8] class, interface, enum, or record expected
+[ERROR] /home/p10003/RecruitmentManagementSystem/src/main/java/com/controller/RecruitmentController.java:[64,5] class, interface, enum, or record expected
+[ERROR] /home/p10003/RecruitmentManagementSystem/src/main/java/com/controller/RecruitmentController.java:[65,5] class, interface, enum, or record expected
+[ERROR] /home/p10003/RecruitmentManagementSystem/src/main/java/com/controller/RecruitmentController.java:[66,1] class, interface, enum, or record expected
+[ERROR] /home/p10003/RecruitmentManagementSystem/src/main/java/com/service/RecruitmentService.java:[2,1] class, interface, enum, or record expected
+[ERROR] /home/p10003/RecruitmentManagementSystem/src/main/java/com/service/RecruitmentService.java:[19,31] illegal start of expression
+[ERROR] /home/p10003/RecruitmentManagementSystem/src/main/java/com/service/RecruitmentService.java:[19,32] ';' expected
+[ERROR] /home/p10003/RecruitmentManagementSystem/src/main/java/com/service/RecruitmentService.java:[20,72] ';' expected
+[ERROR] /home/p10003/RecruitmentManagementSystem/src/main/java/com/model/CandidateInfo.java:[2,1] class, interface, enum, or record expected
+[ERROR] /home/p10003/RecruitmentManagementSystem/src/main/java/com/model/CandidateInfo.java:[20,57] ')' expected
+[ERROR] /home/p10003/RecruitmentManagementSystem/src/main/java/com/model/CandidateInfo.java:[20,58] class, interface, enum, or record expected
+[ERROR] /home/p10003/RecruitmentManagementSystem/src/main/java/com/model/CandidateInfo.java:[23,17] class, interface, enum, or record expected
+[ERROR] /home/p10003/RecruitmentManagementSystem/src/main/java/com/model/CandidateInfo.java:[25,16] class, interface, enum, or record expected
+[ERROR] /home/p10003/RecruitmentManagementSystem/src/main/java/com/model/CandidateInfo.java:[29,16] class, interface, enum, or record expected
+[ERROR] /home/p10003/RecruitmentManagementSystem/src/main/java/com/model/CandidateInfo.java:[31,9] class, interface, enum, or record expected
+[ERROR] /home/p10003/RecruitmentManagementSystem/src/main/java/com/model/CandidateInfo.java:[33,16] class, interface, enum, or record expected
+[ERROR] /home/p10003/RecruitmentManagementSystem/src/main/java/com/model/CandidateInfo.java:[35,9] class, interface, enum, or record expected
+[ERROR] /home/p10003/RecruitmentManagementSystem/src/main/java/com/model/CandidateInfo.java:[37,16] class, interface, enum, or record expected
+[ERROR] /home/p10003/RecruitmentManagementSystem/src/main/java/com/model/CandidateInfo.java:[39,9] class, interface, enum, or record expected
+[ERROR] /home/p10003/RecruitmentManagementSystem/src/main/java/com/model/CandidateInfo.java:[41,16] class, interface, enum, or record expected
+[ERROR] /home/p10003/RecruitmentManagementSystem/src/main/java/com/model/CandidateInfo.java:[43,9] class, interface, enum, or record expected
+[ERROR] /home/p10003/RecruitmentManagementSystem/src/main/java/com/model/CandidateInfo.java:[45,16] class, interface, enum, or record expected
+[ERROR] /home/p10003/RecruitmentManagementSystem/src/main/java/com/model/CandidateInfo.java:[47,9] class, interface, enum, or record expected
+[ERROR] /home/p10003/RecruitmentManagementSystem/src/main/java/com/model/CandidateInfo.java:[49,16] class, interface, enum, or record expected
+[ERROR] /home/p10003/RecruitmentManagementSystem/src/main/java/com/model/CandidateInfo.java:[51,9] class, interface, enum, or record expected
+[ERROR] /home/p10003/RecruitmentManagementSystem/src/main/java/com/model/CandidateInfo.java:[53,16] class, interface, enum, or record expected
+[ERROR] /home/p10003/RecruitmentManagementSystem/src/main/java/com/model/CandidateInfo.java:[55,9] class, interface, enum, or record expected
+[ERROR] /home/p10003/RecruitmentManagementSystem/src/main/java/com/model/CandidateInfo.java:[57,16] class, interface, enum, or record expected
+[ERROR] /home/p10003/RecruitmentManagementSystem/src/main/java/com/model/CandidateInfo.java:[59,9] class, interface, enum, or record expected
+[ERROR] /home/p10003/RecruitmentManagementSystem/src/main/java/com/model/CandidateInfo.java:[61,16] class, interface, enum, or record expected
+[ERROR] /home/p10003/RecruitmentManagementSystem/src/main/java/com/model/CandidateInfo.java:[63,9] class, interface, enum, or record expected
+[ERROR] /home/p10003/RecruitmentManagementSystem/src/main/java/com/model/CandidateInfo.java:[65,16] class, interface, enum, or record expected
+[ERROR] /home/p10003/RecruitmentManagementSystem/src/main/java/com/model/CandidateInfo.java:[67,9] class, interface, enum, or record expected
+[ERROR] /home/p10003/RecruitmentManagementSystem/src/main/java/com/model/CandidateInfo.java:[69,16] class, interface, enum, or record expected
+[ERROR] /home/p10003/RecruitmentManagementSystem/src/main/java/com/model/CandidateInfo.java:[71,9] class, interface, enum, or record expected
+[ERROR] /home/p10003/RecruitmentManagementSystem/src/main/java/com/model/CandidateInfo.java:[73,16] class, interface, enum, or record expected
+[ERROR] /home/p10003/RecruitmentManagementSystem/src/main/java/com/model/CandidateInfo.java:[75,9] class, interface, enum, or record expected
+[ERROR] /home/p10003/RecruitmentManagementSystem/src/main/java/com/controller/InternationalizationConfig.java:[25,24] invalid method declaration; return type required
+[ERROR] /home/p10003/RecruitmentManagementSystem/src/main/java/com/controller/InternationalizationConfig.java:[25,49] ';' expected
+[ERROR] /home/p10003/RecruitmentManagementSystem/src/main/java/com/controller/InternationalizationConfig.java:[28,44] <identifier> expected
+[ERROR] /home/p10003/RecruitmentManagementSystem/src/main/java/com/controller/InternationalizationConfig.java:[28,45] illegal start of type
+[ERROR] /home/p10003/RecruitmentManagementSystem/src/main/java/com/controller/InternationalizationConfig.java:[29,29] illegal start of type
+[ERROR] /home/p10003/RecruitmentManagementSystem/src/main/java/com/controller/InternationalizationConfig.java:[29,39] <identifier> expected
+[ERROR] /home/p10003/RecruitmentManagementSystem/src/main/java/com/controller/InternationalizationConfig.java:[32,25] illegal start of expression
+[ERROR] /home/p10003/RecruitmentManagementSystem/src/main/java/com/controller/InternationalizationConfig.java:[32,34] ';' expected
+[ERROR] /home/p10003/RecruitmentManagementSystem/src/main/java/com/controller/InternationalizationConfig.java:[33,25] illegal start of expression
+[INFO] 55 errors 
+[INFO] -------------------------------------------------------------
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  2.903 s
+[INFO] Finished at: 2025-09-02T14:55:43+05:30
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-compiler-plugin:3.10.1:compile (default-compile) on project RecruitmentManagementSystem: Compilation failure: Compilation failure: 
+[ERROR] /home/p10003/RecruitmentManagementSystem/src/main/java/com/controller/RecruitmentController.java:[47,24] ';' expected
+[ERROR] /home/p10003/RecruitmentManagementSystem/src/main/java/com/controller/RecruitmentController.java:[50,40] <identifier> expected
+[ERROR] /home/p10003/RecruitmentManagementSystem/src/main/java/com/controller/RecruitmentController.java:[50,50] <identifier> expected
+[ERROR] /home/p10003/RecruitmentManagementSystem/src/main/java/com/controller/RecruitmentController.java:[51,27] <identifier> expected
+[ERROR] /home/p10003/RecruitmentManagementSystem/src/main/java/com/controller/RecruitmentController.java:[51,28] illegal start of type
+[ERROR] /home/p10003/RecruitmentManagementSystem/src/main/java/com/controller/RecruitmentController.java:[52,9] illegal start of type
+[ERROR] /home/p10003/RecruitmentManagementSystem/src/main/java/com/controller/RecruitmentController.java:[55,8] class, interface, enum, or record expected
+[ERROR] /home/p10003/RecruitmentManagementSystem/src/main/java/com/controller/RecruitmentController.java:[58,5] class, interface, enum, or record expected
+[ERROR] /home/p10003/RecruitmentManagementSystem/src/main/java/com/controller/RecruitmentController.java:[59,1] class, interface, enum, or record expected
+[ERROR] /home/p10003/RecruitmentManagementSystem/src/main/java/com/controller/RecruitmentController.java:[61,8] class, interface, enum, or record expected
+[ERROR] /home/p10003/RecruitmentManagementSystem/src/main/java/com/controller/RecruitmentController.java:[64,5] class, interface, enum, or record expected
+[ERROR] /home/p10003/RecruitmentManagementSystem/src/main/java/com/controller/RecruitmentController.java:[65,5] class, interface, enum, or record expected
+[ERROR] /home/p10003/RecruitmentManagementSystem/src/main/java/com/controller/RecruitmentController.java:[66,1] class, interface, enum, or record expected
+[ERROR] /home/p10003/RecruitmentManagementSystem/src/main/java/com/service/RecruitmentService.java:[2,1] class, interface, enum, or record expected
+[ERROR] /home/p10003/RecruitmentManagementSystem/src/main/java/com/service/RecruitmentService.java:[19,31] illegal start of expression
+[ERROR] /home/p10003/RecruitmentManagementSystem/src/main/java/com/service/RecruitmentService.java:[19,32] ';' expected
+[ERROR] /home/p10003/RecruitmentManagementSystem/src/main/java/com/service/RecruitmentService.java:[20,72] ';' expected
+[ERROR] /home/p10003/RecruitmentManagementSystem/src/main/java/com/model/CandidateInfo.java:[2,1] class, interface, enum, or record expected
+[ERROR] /home/p10003/RecruitmentManagementSystem/src/main/java/com/model/CandidateInfo.java:[20,57] ')' expected
+[ERROR] /home/p10003/RecruitmentManagementSystem/src/main/java/com/model/CandidateInfo.java:[20,58] class, interface, enum, or record expected
+[ERROR] /home/p10003/RecruitmentManagementSystem/src/main/java/com/model/CandidateInfo.java:[23,17] class, interface, enum, or record expected
+[ERROR] /home/p10003/RecruitmentManagementSystem/src/main/java/com/model/CandidateInfo.java:[25,16] class, interface, enum, or record expected
+[ERROR] /home/p10003/RecruitmentManagementSystem/src/main/java/com/model/CandidateInfo.java:[29,16] class, interface, enum, or record expected
+[ERROR] /home/p10003/RecruitmentManagementSystem/src/main/java/com/model/CandidateInfo.java:[31,9] class, interface, enum, or record expected
+[ERROR] /home/p10003/RecruitmentManagementSystem/src/main/java/com/model/CandidateInfo.java:[33,16] class, interface, enum, or record expected
+[ERROR] /home/p10003/RecruitmentManagementSystem/src/main/java/com/model/CandidateInfo.java:[35,9] class, interface, enum, or record expected
+[ERROR] /home/p10003/RecruitmentManagementSystem/src/main/java/com/model/CandidateInfo.java:[37,16] class, interface, enum, or record expected
+[ERROR] /home/p10003/RecruitmentManagementSystem/src/main/java/com/model/CandidateInfo.java:[39,9] class, interface, enum, or record expected
+[ERROR] /home/p10003/RecruitmentManagementSystem/src/main/java/com/model/CandidateInfo.java:[41,16] class, interface, enum, or record expected
+[ERROR] /home/p10003/RecruitmentManagementSystem/src/main/java/com/model/CandidateInfo.java:[43,9] class, interface, enum, or record expected
+[ERROR] /home/p10003/RecruitmentManagementSystem/src/main/java/com/model/CandidateInfo.java:[45,16] class, interface, enum, or record expected
+[ERROR] /home/p10003/RecruitmentManagementSystem/src/main/java/com/model/CandidateInfo.java:[47,9] class, interface, enum, or record expected
+[ERROR] /home/p10003/RecruitmentManagementSystem/src/main/java/com/model/CandidateInfo.java:[49,16] class, interface, enum, or record expected
+[ERROR] /home/p10003/RecruitmentManagementSystem/src/main/java/com/model/CandidateInfo.java:[51,9] class, interface, enum, or record expected
+[ERROR] /home/p10003/RecruitmentManagementSystem/src/main/java/com/model/CandidateInfo.java:[53,16] class, interface, enum, or record expected
+[ERROR] /home/p10003/RecruitmentManagementSystem/src/main/java/com/model/CandidateInfo.java:[55,9] class, interface, enum, or record expected
+[ERROR] /home/p10003/RecruitmentManagementSystem/src/main/java/com/model/CandidateInfo.java:[57,16] class, interface, enum, or record expected
+[ERROR] /home/p10003/RecruitmentManagementSystem/src/main/java/com/model/CandidateInfo.java:[59,9] class, interface, enum, or record expected
+[ERROR] /home/p10003/RecruitmentManagementSystem/src/main/java/com/model/CandidateInfo.java:[61,16] class, interface, enum, or record expected
+[ERROR] /home/p10003/RecruitmentManagementSystem/src/main/java/com/model/CandidateInfo.java:[63,9] class, interface, enum, or record expected
+[ERROR] /home/p10003/RecruitmentManagementSystem/src/main/java/com/model/CandidateInfo.java:[65,16] class, interface, enum, or record expected
+[ERROR] /home/p10003/RecruitmentManagementSystem/src/main/java/com/model/CandidateInfo.java:[67,9] class, interface, enum, or record expected
+[ERROR] /home/p10003/RecruitmentManagementSystem/src/main/java/com/model/CandidateInfo.java:[69,16] class, interface, enum, or record expected
+[ERROR] /home/p10003/RecruitmentManagementSystem/src/main/java/com/model/CandidateInfo.java:[71,9] class, interface, enum, or record expected
+[ERROR] /home/p10003/RecruitmentManagementSystem/src/main/java/com/model/CandidateInfo.java:[73,16] class, interface, enum, or record expected
+[ERROR] /home/p10003/RecruitmentManagementSystem/src/main/java/com/model/CandidateInfo.java:[75,9] class, interface, enum, or record expected
+[ERROR] /home/p10003/RecruitmentManagementSystem/src/main/java/com/controller/InternationalizationConfig.java:[25,24] invalid method declaration; return type required
+[ERROR] /home/p10003/RecruitmentManagementSystem/src/main/java/com/controller/InternationalizationConfig.java:[25,49] ';' expected
+[ERROR] /home/p10003/RecruitmentManagementSystem/src/main/java/com/controller/InternationalizationConfig.java:[28,44] <identifier> expected
+[ERROR] /home/p10003/RecruitmentManagementSystem/src/main/java/com/controller/InternationalizationConfig.java:[28,45] illegal start of type
+[ERROR] /home/p10003/RecruitmentManagementSystem/src/main/java/com/controller/InternationalizationConfig.java:[29,29] illegal start of type
+[ERROR] /home/p10003/RecruitmentManagementSystem/src/main/java/com/controller/InternationalizationConfig.java:[29,39] <identifier> expected
+[ERROR] /home/p10003/RecruitmentManagementSystem/src/main/java/com/controller/InternationalizationConfig.java:[32,25] illegal start of expression
+[ERROR] /home/p10003/RecruitmentManagementSystem/src/main/java/com/controller/InternationalizationConfig.java:[32,34] ';' expected
+[ERROR] /home/p10003/RecruitmentManagementSystem/src/main/java/com/controller/InternationalizationConfig.java:[33,25] illegal start of expression
+[ERROR] -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
