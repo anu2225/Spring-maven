@@ -1,0 +1,541 @@
+pom file 
+<project xmlns="http://maven.apache.org/POM/4.0.0" 
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 
+                             http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.bank</groupId>
+  <artifactId>account-atm</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <packaging>jar</packaging>
+
+  <parent>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-parent</artifactId>
+    <version>3.1.4</version>
+    <relativePath/>
+  </parent>
+
+  <dependencies>
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-data-jpa</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>com.h2database</groupId>
+      <artifactId>h2</artifactId>
+      <scope>runtime</scope>
+    </dependency>
+
+    <!-- Logging -->
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-api</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-simple</artifactId>
+      <scope>runtime</scope>
+    </dependency>
+
+    <!-- Optional: for java Date mapping -->
+    <dependency>
+      <groupId>com.fasterxml.jackson.datatype</groupId>
+      <artifactId>jackson-datatype-jsr310</artifactId>
+    </dependency>
+  </dependencies>
+
+  <properties>
+    <java.version>17</java.version>
+  </properties>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-maven-plugin</artifactId>
+      </plugin>
+    </plugins>
+  </build>
+</project>
+
+
+application properties
+
+# Use H2 in-memory DB for quick testing; change to mysql/postgres if needed
+spring.datasource.url=jdbc:h2:mem:testdb
+spring.datasource.driverClassName=org.h2.Driver
+spring.datasource.username=sa
+spring.datasource.password=
+spring.jpa.database-platform=org.hibernate.dialect.H2Dialect
+spring.jpa.hibernate.ddl-auto=update
+
+# Keep the logging.config property name as requested (value points to logger.xml)
+logging.config=src/main/resources/logger.xml
+
+# show sql (optional)
+spring.jpa.show-sql=true
+
+logger xml
+
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="WARN">
+  <Appenders>
+    <File name="MyFile" fileName="logs/mylogs.log" append="true">
+      <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss} %-5p %c{1} - %m%n"/>
+    </File>
+    <Console name="Console" target="SYSTEM_OUT">
+      <PatternLayout pattern="%d{HH:mm:ss} %-5p %c{1} - %m%n"/>
+    </Console>
+  </Appenders>
+
+  <Loggers>
+    <!-- logger for com.dao package goes to file -->
+    <Logger name="com.dao" level="info" additivity="false">
+      <AppenderRef ref="MyFile"/>
+      <AppenderRef ref="Console"/>
+    </Logger>
+
+    <Root level="info">
+      <AppenderRef ref="Console"/>
+    </Root>
+  </Loggers>
+</Configuration>
+
+
+account.java
+package com.bank.model;
+
+import jakarta.persistence.*;
+
+@Entity
+@Table(name = "account")
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name = "account_type")
+public abstract class Account {
+
+    @Id
+    @Column(name = "account_number")
+    private Integer accountNumber;
+
+    @Column(name = "holder_name")
+    private String holderName;
+
+    @Column(name = "balance")
+    private Double balance;
+
+    // Bidirectional one-to-one
+    @OneToOne(mappedBy = "account", cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
+    private ATMCard atmCard;
+
+    // Constructors
+    public Account() {}
+
+    public Account(Integer accountNumber, String holderName, Double balance) {
+        this.accountNumber = accountNumber;
+        this.holderName = holderName;
+        this.balance = balance;
+    }
+
+    // Getters and setters
+    public Integer getAccountNumber() {
+        return accountNumber;
+    }
+
+    public void setAccountNumber(Integer accountNumber) {
+        this.accountNumber = accountNumber;
+    }
+
+    public String getHolderName() {
+        return holderName;
+    }
+
+    public void setHolderName(String holderName) {
+        this.holderName = holderName;
+    }
+
+    public Double getBalance() {
+        return balance;
+    }
+
+    public void setBalance(Double balance) {
+        this.balance = balance;
+    }
+
+    public ATMCard getAtmCard() {
+        return atmCard;
+    }
+
+    public void setAtmCard(ATMCard atmCard) {
+        this.atmCard = atmCard;
+        if (atmCard != null) {
+            atmCard.setAccount(this);
+        }
+    }
+}
+
+savings account java 
+package com.bank.model;
+
+import jakarta.persistence.*;
+
+@Entity
+@DiscriminatorValue("SAV")
+public class SavingsAccount extends Account {
+
+    @Column(name = "minimum_balance")
+    private Double minimumBalance;
+
+    public SavingsAccount() {}
+
+    public SavingsAccount(Integer accountNumber, String holderName, Double balance, Double minimumBalance) {
+        super(accountNumber, holderName, balance);
+        this.minimumBalance = minimumBalance;
+    }
+
+    public Double getMinimumBalance() {
+        return minimumBalance;
+    }
+
+    public void setMinimumBalance(Double minimumBalance) {
+        this.minimumBalance = minimumBalance;
+    }
+}
+
+current account java
+
+
+package com.bank.model;
+
+import jakarta.persistence.*;
+
+@Entity
+@DiscriminatorValue("CURR")
+public class CurrentAccount extends Account {
+
+    @Column(name = "odlimit")
+    private Double odlimit;
+
+    public CurrentAccount() {}
+
+    public CurrentAccount(Integer accountNumber, String holderName, Double balance, Double odlimit) {
+        super(accountNumber, holderName, balance);
+        this.odlimit = odlimit;
+    }
+
+    public Double getOdlimit() {
+        return odlimit;
+    }
+
+    public void setOdlimit(Double odlimit) {
+        this.odlimit = odlimit;
+    }
+}
+
+
+atm card java 
+
+package com.bank.model;
+
+import jakarta.persistence.*;
+import java.util.Date;
+
+@Entity
+@Table(name = "atmcard")
+public class ATMCard {
+
+    @Id
+    @Column(name = "card_number")
+    private String cardNumber;
+
+    @Column(name = "card_type")
+    private String cardType;
+
+    @Column(name = "cvv_number")
+    private Integer cvvNumber;
+
+    @Column(name = "expiry_date")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date expiryDate;
+
+    // foreign key column account_number
+    @OneToOne
+    @JoinColumn(name = "account_number", referencedColumnName = "account_number", unique = true)
+    private Account account;
+
+    public ATMCard() {}
+
+    public ATMCard(String cardNumber, String cardType, Integer cvvNumber, Date expiryDate) {
+        this.cardNumber = cardNumber;
+        this.cardType = cardType;
+        this.cvvNumber = cvvNumber;
+        this.expiryDate = expiryDate;
+    }
+
+    // getters & setters
+    public String getCardNumber() {
+        return cardNumber;
+    }
+
+    public void setCardNumber(String cardNumber) {
+        this.cardNumber = cardNumber;
+    }
+
+    public String getCardType() {
+        return cardType;
+    }
+
+    public void setCardType(String cardType) {
+        this.cardType = cardType;
+    }
+
+    public Integer getCvvNumber() {
+        return cvvNumber;
+    }
+
+    public void setCvvNumber(Integer cvvNumber) {
+        this.cvvNumber = cvvNumber;
+    }
+
+    public Date getExpiryDate() {
+        return expiryDate;
+    }
+
+    public void setExpiryDate(Date expiryDate) {
+        this.expiryDate = expiryDate;
+    }
+
+    public Account getAccount() {
+        return account;
+    }
+
+    public void setAccount(Account account) {
+        this.account = account;
+    }
+}
+
+
+account repository java 
+
+
+package com.bank.repository;
+
+import com.bank.model.Account;
+import org.springframework.data.jpa.repository.JpaRepository;
+import java.util.List;
+
+public interface AccountRepository extends JpaRepository<Account, Integer> {
+    // Derived query to find accounts by atmCard.cardType
+    List<Account> findByAtmCardCardType(String cardType);
+}
+
+
+atm repository java 
+
+package com.bank.repository;
+
+import com.bank.model.ATMCard;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface ATMCardRepository extends JpaRepository<ATMCard, String> {
+    // you can add custom queries if required
+}
+
+
+
+account dao 
+
+package com.bank.dao;
+
+import com.bank.model.Account;
+import com.bank.repository.AccountRepository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Repository;
+
+import java.util.List;
+
+@Repository
+public class AccountDAO {
+
+    private static final Logger logger = LoggerFactory.getLogger(AccountDAO.class);
+
+    private final AccountRepository accountRepository;
+
+    public AccountDAO(AccountRepository accountRepository) {
+        this.accountRepository = accountRepository;
+    }
+
+    /**
+     * Stores the account details into the account table.
+     * After storing the account information, use SLF4J and log:
+     * "Account with id <<<accountNumber>>> added successfully".
+     */
+    public void openAccount(Account account) {
+        try {
+            accountRepository.save(account);
+            logger.info("Account with id <<<" + account.getAccountNumber() + ">>> added successfully");
+        } catch (Exception ex) {
+            logger.error("Error while adding account with id <<<" + account.getAccountNumber() + ">>>", ex);
+            throw ex;
+        }
+    }
+
+    /**
+     * Retrieve list of accounts by card type
+     * On success: log "Account details with card type <<cardType>> retrieved successfully."
+     * If empty: log error "No account with this card type <<cardType>>"
+     */
+    public List<Account> retrieveAccountBasedOnCardType(String cardType) {
+        List<Account> accounts = accountRepository.findByAtmCardCardType(cardType);
+        if (accounts == null || accounts.isEmpty()) {
+            logger.error("No account with this card type <<" + cardType + ">>");
+        } else {
+            logger.info("Account details with card type <<" + cardType + ">> retrieved successfully.");
+        }
+        return accounts;
+    }
+}
+
+atm card dao 
+
+package com.bank.dao;
+
+import com.bank.model.ATMCard;
+import com.bank.model.Account;
+import com.bank.repository.ATMCardRepository;
+import com.bank.repository.AccountRepository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
+
+@Repository
+public class ATMCardDAO {
+
+    private static final Logger logger = LoggerFactory.getLogger(ATMCardDAO.class);
+
+    private final ATMCardRepository atmCardRepository;
+    private final AccountRepository accountRepository;
+
+    public ATMCardDAO(ATMCardRepository atmCardRepository, AccountRepository accountRepository) {
+        this.atmCardRepository = atmCardRepository;
+        this.accountRepository = accountRepository;
+    }
+
+    /**
+     * This method should add the ATMCard details for the given account number into the atmcard table.
+     * After adding into the table use SLF4J and log:
+     * "ATM card successfully issued to account number <<accountNumber>>".
+     * If the account already has an ATM card use SLF4J and log:
+     * "ATM card not issued to account number <<accountNumber>>"
+     */
+    @Transactional
+    public void issueATMCardToAccount(String accountNumberStr, ATMCard atmCardObject) {
+        try {
+            Integer accountNumber;
+            try {
+                accountNumber = Integer.valueOf(accountNumberStr);
+            } catch (NumberFormatException nfe) {
+                logger.error("Invalid account number provided: <<" + accountNumberStr + ">>", nfe);
+                return;
+            }
+
+            Account account = accountRepository.findById(accountNumber).orElse(null);
+            if (account == null) {
+                logger.error("ATM card not issued to account number <<" + accountNumber + ">> - account not found");
+                return;
+            }
+
+            if (account.getAtmCard() != null) {
+                // already has a card
+                logger.error("ATM card not issued to account number <<" + accountNumber + ">>");
+                return;
+            }
+
+            // set bidirectional relationship
+            atmCardObject.setAccount(account);
+            account.setAtmCard(atmCardObject);
+
+            // Save card (cascade on account side would save too, but we save card explicitly)
+            atmCardRepository.save(atmCardObject);
+
+            logger.info("ATM card successfully issued to account number <<" + accountNumber + ">>");
+        } catch (Exception ex) {
+            logger.error("Error issuing ATM card to account number <<" + accountNumberStr + ">>", ex);
+            throw ex;
+        }
+    }
+}
+
+
+account application java
+
+
+package com.bank;
+
+import com.bank.dao.ATMCardDAO;
+import com.bank.dao.AccountDAO;
+import com.bank.model.ATMCard;
+import com.bank.model.CurrentAccount;
+import com.bank.model.SavingsAccount;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.CommandLineRunner;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+import java.text.SimpleDateFormat;
+
+@SpringBootApplication
+public class AccountAtmApplication implements CommandLineRunner {
+
+    @Autowired
+    private AccountDAO accountDAO;
+
+    @Autowired
+    private ATMCardDAO atmCardDAO;
+
+    public static void main(String[] args) {
+        SpringApplication.run(AccountAtmApplication.class, args);
+    }
+
+    @Override
+    public void run(String... args) throws Exception {
+        // Sample data to test functionality quickly
+        SavingsAccount sa = new SavingsAccount(1001, "Ramesh", 5000.0, 1000.0);
+        accountDAO.openAccount(sa);
+
+        CurrentAccount ca = new CurrentAccount(2001, "Suresh", 10000.0, 2000.0);
+        accountDAO.openAccount(ca);
+
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        ATMCard card = new ATMCard("CARD1001", "VISA", 123, sdf.parse("2027-12-31"));
+        atmCardDAO.issueATMCardToAccount("1001", card);
+
+        // Try issuing again to same account -> should log error
+        ATMCard card2 = new ATMCard("CARD1002", "Master", 321, sdf.parse("2028-12-31"));
+        atmCardDAO.issueATMCardToAccount("1001", card2);
+
+        // Retrieve accounts by card type
+        accountDAO.retrieveAccountBasedOnCardType("VISA");
+        accountDAO.retrieveAccountBasedOnCardType("RuPay");
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
